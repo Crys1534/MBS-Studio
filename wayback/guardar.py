@@ -15,12 +15,13 @@ Que hace:
   4. Deja un resumen en la pantalla de la corrida (pestana Actions de GitHub).
 Solo usa Python normal (no hay que instalar nada).
 """
-import argparse, concurrent.futures as cf, os, re, sys, time, urllib.error, urllib.request
+import argparse, concurrent.futures as cf, json, os, re, sys, time, urllib.error, urllib.request
 from urllib.parse import quote
 
 UA = 'Mozilla/5.0 (compatible; MBS-respaldo-wayback/1.0; +https://github.com/Crys1534/MBS-Studio)'
 SITIO = os.environ.get('WAYBACK_SITIO', 'https://mineblocksstuffs.weebly.com')
 GUARDAR = os.environ.get('WAYBACK_GUARDAR', 'https://web.archive.org/save/')
+DISPONIBLE = os.environ.get('WAYBACK_DISPONIBLE', 'https://archive.org/wayback/available')
 
 
 def leer_lista(ruta, modo):
@@ -92,12 +93,27 @@ def existe(ruta, canario):
     return True
 
 
-def guardar(ruta, args, log):
+def ya_guardada(ruta, desde):
+    """Wayback a veces guarda la pagina aunque no conteste a tiempo. Pregunta si ya hay una copia reciente (hecha despues de `desde`)."""
+    ahora = time.strftime('%Y%m%d%H%M%S', time.gmtime())
+    cod, _, _, texto = pedir(f'{DISPONIBLE}?url={quote(SITIO + ruta, safe="")}&timestamp={ahora}', timeout=40)
+    try:
+        snap = json.loads(texto)['archived_snapshots']['closest']
+        if snap.get('available') and snap['timestamp'] >= desde:
+            return snap['url'].replace('http://', 'https://', 1)
+    except Exception:
+        pass
+    return None
+
+
+def guardar(ruta, args, log, intentos=None):
     """Le pide a Wayback que guarde la pagina. Devuelve (True, enlace_al_guardado) o (False, motivo)."""
+    intentos = intentos or args.intentos
     destino = GUARDAR + SITIO + ruta
     motivo = ''
-    for intento in range(1, args.intentos + 1):
-        cod, final, enc, _ = pedir(destino, timeout=args.espera_captura)
+    desde = time.strftime('%Y%m%d%H%M%S', time.gmtime(time.time() - 90))
+    for intento in range(1, intentos + 1):
+        cod, final, enc, texto = pedir(destino, timeout=args.espera_captura)
         if cod == 200:
             ubic = enc.get('Content-Location') if enc else None
             if ubic and ubic.startswith('/web/'):
@@ -105,19 +121,24 @@ def guardar(ruta, args, log):
             if '/web/' in final:
                 return True, final
             return True, '(guardada)'
-        ultimo = intento == args.intentos
+        ultimo = intento == intentos
         if cod == 429:
             motivo = 'Wayback pide ir mas despacio (429)'
             espera = args.espera_429
-        elif cod in (0, 502, 503, 504, 520, 523, 524, 408):
-            motivo = f'Wayback no respondio bien ({cod or "sin conexion"})'
+        elif cod == 0 or cod in (502, 503, 504, 520, 523, 524, 408):
+            motivo = 'Wayback no respondio a tiempo o cerro la conexion' if cod == 0 else f'Wayback respondio con error ({cod})'
+            if cod == 0 and texto:
+                motivo += f' [{texto[:90]}]'
+            copia = ya_guardada(ruta, desde)                 # quiza si se guardo y solo tardo en avisar
+            if copia:
+                return True, copia
             espera = args.espera_error * intento
         else:
             return False, f'Wayback no pudo guardarla (codigo {cod})'
         if ultimo:
             log(f'   se rindio: {motivo}')
         else:
-            log(f'   reintento {intento}/{args.intentos - 1} en {espera:.0f} s: {motivo}')
+            log(f'   reintento {intento}/{intentos - 1} en {espera:.0f} s: {motivo}')
             time.sleep(espera)
     return False, motivo
 
@@ -126,11 +147,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--modo', choices=['semanal', 'mensual', 'todo'], default='semanal')
     ap.add_argument('--lista', default=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'paginas.txt'))
-    ap.add_argument('--pausa', type=float, default=10, help='segundos de descanso entre una pagina y otra')
+    ap.add_argument('--pausa', type=float, default=15, help='segundos de descanso entre una pagina y otra')
     ap.add_argument('--intentos', type=int, default=3)
+    ap.add_argument('--espera-segunda', type=float, default=180, help='segundos de descanso antes de la segunda vuelta (para las que fallaron)')
     ap.add_argument('--espera-429', type=float, default=65, help='segundos de espera si Wayback pide ir mas despacio')
-    ap.add_argument('--espera-error', type=float, default=20, help='segundos de espera (x el numero de intento) si Wayback falla')
-    ap.add_argument('--espera-captura', type=float, default=150, help='segundos maximos que se espera a que Wayback guarde una pagina')
+    ap.add_argument('--espera-error', type=float, default=30, help='segundos de espera (x el numero de intento) si Wayback falla')
+    ap.add_argument('--espera-captura', type=float, default=200, help='segundos maximos que se espera a que Wayback guarde una pagina')
     ap.add_argument('--parte', default='1/1', help='para repartir el trabajo entre varios robots a la vez: 2/3 = la segunda de tres partes')
     ap.add_argument('--limite-minutos', type=float, default=330, help='para antes de este tiempo (GitHub corta a las 6 horas)')
     args = ap.parse_args()
@@ -173,6 +195,23 @@ def main():
             fallas.append((ruta, dato)); log(f'   NO se pudo: {dato}')
         time.sleep(args.pausa)
 
+    # segunda vuelta: las que fallaron se intentan otra vez despues de descansar un rato
+    if fallas and not pendientes and (time.time() - t0) / 60 < args.limite_minutos:
+        log(f'\nSegunda vuelta: {len(fallas)} paginas fallaron. Descansando {args.espera_segunda:.0f} s y se intentan otra vez ...')
+        time.sleep(args.espera_segunda)
+        otra = []
+        for ruta, _ in fallas:
+            if (time.time() - t0) / 60 > args.limite_minutos:
+                otra.append((ruta, 'se acabo el tiempo antes de la segunda vuelta')); continue
+            log(f'[otra vez] {ruta}')
+            bien, dato = guardar(ruta, args, log, intentos=2)
+            if bien:
+                ok.append((ruta, dato)); log(f'   guardada: {dato}')
+            else:
+                otra.append((ruta, dato)); log(f'   NO se pudo: {dato}')
+            time.sleep(args.pausa)
+        fallas = otra
+
     minutos = (time.time() - t0) / 60
     resumen = [f'## Wayback Machine ({args.modo}' + (f', parte {parte} de {partes}' if partes > 1 else '') + ')', '',
                f'- Guardadas: **{len(ok)}**', f'- Fallaron: **{len(fallas)}**', f'- No existen en el sitio (saltadas): {len(inexistentes)}',
@@ -186,9 +225,9 @@ def main():
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
             f.write(texto + '\n')
-    # si fallaron muchas, la corrida se marca en rojo (GitHub te avisa por correo)
+    # si fallo mas de la mitad (o todas), la corrida se marca en rojo (GitHub te avisa por correo)
     intentadas = len(ok) + len(fallas)
-    if intentadas and (not ok or len(fallas) > max(5, 0.2 * intentadas)):
+    if intentadas and (not ok or len(fallas) > max(5, 0.5 * intentadas)):
         sys.exit(1)
 
 
