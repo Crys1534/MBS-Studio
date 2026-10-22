@@ -1,0 +1,131 @@
+# =====================================================================================================
+#  LISTA DE PAGINAS QUE SE GUARDAN EN LA WAYBACK MACHINE
+#
+#  - Cada linea es UNA pagina (sin el .html) o un RANGO.  Ejemplos:
+#        m-164          ->  mineblocksstuffs.weebly.com/m-164.html
+#        m-1..300       ->  de m-1 a m-300
+#        p1..80         ->  de p1 a p80
+#        /              ->  la pagina de inicio
+#  - Lo que pone # despues se ignora (son comentarios).
+#  - NO importa si algun numero no existe (por ejemplo m-250 si solo llegas a m-210):
+#    el robot revisa primero cuales paginas existen y se salta las que no.
+#    Asi, cuando subas mapas nuevos se guardan solitos sin que cambies nada.
+#  - [semanal] = se guarda CADA SEMANA (y tambien cada mes).   [mensual] = se guarda solo el dia 1 de cada mes.
+# =====================================================================================================
+
+[semanal]
+/
+p1..80
+
+[mensual]
+# mapas, skins y texture packs (rangos con margen para lo que subas despues)
+m-1..300
+skin-1..250
+tp-1..60
+tp2-1..60
+
+# mapas con nombre en vez de numero
+m-biomes
+m-camel_city
+m-fnaf_sl
+m-left4dead
+m-nether_in_overworld
+m-sky_wars_mobs_edition
+m-skywars_mobs_edition
+m-snowyland
+m-super_mario_bros
+m-155-5
+m-7-5
+
+# perfiles de usuario
+u-0-1
+u-01miguelito
+u-123456789987
+u-_mmm_
+u-agente_pato
+u-alex_milano
+u-alhexthaperv1510
+u-andres
+u-augus_perez
+u-autorrrrrrrrrr
+u-bebanib
+u-bebecytodani2
+u-blue_soldier
+u-byfas07
+u-carlos
+u-cinecraft_el_pro
+u-crystal
+u-dehjean
+u-deixo
+u-dgito26
+u-eduaedo_13b
+u-elponymalta_mb
+u-elpro_231
+u-elprogamermb
+u-elwawa
+u-fancord
+u-fangirl
+u-fran6
+u-francisco
+u-gataraja_300
+u-gelip25
+u-geometrycosyt
+u-hacker12323
+u-hacker_yt
+u-hamed
+u-henrry
+u-herobrine
+u-iiiiiiiiiiiiiii
+u-ink_cup_bendy
+u-jabes_carrillo
+u-jamesjam25
+u-jatni3l
+u-jesus_gabriel
+u-jesus_hernandez
+u-joeyblocks
+u-johnyeat
+u-juanmc
+u-justvnzl
+u-kanukles
+u-king_andrey
+u-koult
+u-maleros_
+u-mapacreator
+u-mario
+u-matisxz
+u-mayhem
+u-mix_md
+u-nahucraft
+u-name
+u-nice_dgito
+u-noob
+u-nubbyx
+u-onarutin
+u-pedro_exe
+u-pietromaster_pp33
+u-proxpe
+u-pvzweebweb
+u-rainbow_dream
+u-rounakpramanick
+u-samas777
+u-samica
+u-samica777
+u-santy
+u-santy_09
+u-santy_ggj
+u-scream2435t
+u-sebas
+u-sebasofeek
+u-slimr
+u-snow
+u-spartrecck64
+u-swimming_mission
+u-the_adventure_boy
+u-thetopazrobot
+u-unknown
+u-vexus_mb
+u-victor177
+u-wither
+u-wolf32377
+u-xnoobyx
+u-yauksio
