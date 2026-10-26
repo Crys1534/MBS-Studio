@@ -13,9 +13,6 @@
 #  - [semanal] = se guarda CADA SEMANA (y tambien cada mes).   [mensual] = se guarda solo el dia 1 de cada mes.
 # =====================================================================================================
 
-[semanal]
-/
-p1..80
 
 [mensual]
 # mapas, skins y texture packs (rangos con margen para lo que subas despues)
@@ -23,6 +20,8 @@ m-1..300
 skin-1..250
 tp-1..60
 tp2-1..60
+/
+p1..80
 
 # mapas con nombre en vez de numero
 m-biomes
