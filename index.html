@@ -1378,8 +1378,11 @@
 
     /* tarjetas de numeros como en el diseno: sin icono */
     #vista-panel .cards-grid .card h3 svg, #vista-detalle-contenido .cards-grid .card h3 svg { display: none; }
-    #vista-panel > .cards-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; margin: 0 0 16px !important; }
-    #vista-panel > .cards-grid .card .value { min-height: 31px; }
+    /* columna izquierda: tarjetas + grafica; a la derecha "Tiempo real" de arriba a abajo */
+    .pn-izq { flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+    .pn-izq > .cards-grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; margin: 0 !important; }
+    .pn-izq > .cards-grid .card .value { min-height: 31px; }
+    .pn-izq > .panel-box { flex: 1 1 auto; margin: 0 !important; }
 
     /* Panel */
     #pn-otro { display: none !important; }
@@ -1448,8 +1451,6 @@
     .en-pag { font-size: 12px; color: var(--text-muted); }
     .en-pag a { color: var(--accent-blue); text-decoration: none; }
     .en-pag a:hover { text-decoration: underline; }
-    #vista-comentarios .contexto-der { display: none !important; }
-    #vista-comentarios .comentario-izq { width: 100% !important; }
     .hover-actions { opacity: 1 !important; gap: 2px; margin-left: -8px; }
     .hover-actions .btn-admin { border-color: transparent !important; color: var(--text-muted); min-height: 32px; padding: 0 8px; }
     .hover-actions .btn-admin:hover { background: var(--bg-hover); color: var(--text-title); }
@@ -1473,7 +1474,7 @@
     .rd-tool.on { background: var(--bg-main); border-color: var(--accent-blue); box-shadow: inset 0 3px 0 var(--accent-blue); }
 
     @media (max-width: 820px) {
-        #vista-panel > .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+        .pn-izq > .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
         #listaContenidoMaster .page-row > div:not(:first-child) { text-align: left !important; }
         /* arriba: "MBS Studio" y tu foto; el menu completo esta en "Mas" (abajo) */
         #mb-menu { display: none !important; }
@@ -1602,7 +1603,7 @@
                     <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
                         <div class="rd-per">
                             <div class="dt-seg" id="pn-seg" role="group" aria-label="Periodo">
-                                <button type="button" data-r="hoy">Hoy</button><button type="button" data-r="7d">7 d&iacute;as</button><button type="button" data-r="mes">Este mes</button><button type="button" data-r="anio">Este a&ntilde;o</button><button type="button" data-r="siempre">Desde siempre</button><button type="button" data-r="custom">Elegir fechas&hellip;</button>
+                                <button type="button" data-r="hoy">Hoy</button><button type="button" data-r="ayer">Ayer</button><button type="button" data-r="7d">7 d&iacute;as</button><button type="button" data-r="mes">Este mes</button><button type="button" data-r="anio">Este a&ntilde;o</button><button type="button" data-r="siempre">Desde siempre</button><button type="button" data-r="custom">Elegir fechas&hellip;</button>
                             </div>
                             <select id="pn-otro" class="dt-otro" aria-label="Otro periodo">
                                 <option value="">Otro periodo&hellip;</option>
@@ -1773,7 +1774,7 @@
                     </div>
                     <div class="dt-per">
                         <div class="dt-seg" id="dt-seg" role="group" aria-label="Periodo">
-                            <button type="button" data-r="hoy">Hoy</button><button type="button" data-r="7d">7 d&iacute;as</button><button type="button" data-r="30d">30 d&iacute;as</button><button type="button" data-r="anio">Este a&ntilde;o</button><button type="button" data-r="siempre">Desde siempre</button>
+                            <button type="button" data-r="hoy">Hoy</button><button type="button" data-r="ayer">Ayer</button><button type="button" data-r="7d">7 d&iacute;as</button><button type="button" data-r="30d">30 d&iacute;as</button><button type="button" data-r="anio">Este a&ntilde;o</button><button type="button" data-r="siempre">Desde siempre</button>
                         </div>
                         <select id="dt-otro" class="dt-otro" aria-label="Otro periodo">
                             <option value="">Otro periodo&hellip;</option>
@@ -1960,7 +1961,7 @@
             foto: "/uploads/1/2/7/3/127300461/asdrubal-pfp_orig.jpg",
             paginas: [
                 "u-vexus_mb",
-				"m-198",
+                "m-198",
                 "m-188",
                 "m-185",
                 "m-179",
@@ -2566,7 +2567,7 @@
                     <img src="${esc(pageIcon(o.p))}" loading="lazy" decoding="async" style="${stImg}">
                     <div style="overflow:hidden">
                         <a href="${esc(pageUrl(o.p))}" target="_blank" onclick="event.stopPropagation()" class="page-name-link" title="${esc(tit)}">${esc(tit)}</a>
-                        <div class="ct-meta"><span class="ct-tipo" style="color:${dtTipo(o.p).color}">${dtTipo(o.p).uno}</span>${infoAutor}</div>
+                        ${infoAutor}
                     </div>
                 </div>
                 <div style="width:90px;flex-shrink:0;text-align:center;font-weight:bold;color:var(--text-main);font-size:15px">${o.vTot.toLocaleString()}</div>
@@ -2863,7 +2864,7 @@
             });
         }
         const bloque = reps ? `<div class="bloque-respuestas-admin">${reps}</div>` : '';
-        return `<div class="comentario-izq"${o.ctx ? '' : ' style="width:100%"'}>${itemInner({ p: i.p, c: i.c, k: null, d: i.d, enPag: o.ctx ? i.p : null }, bloque)}</div>`;
+        return `<div class="comentario-izq"${o.ctx ? '' : ' style="width:100%"'}>${itemInner({ p: i.p, c: i.c, k: null, d: i.d }, bloque)}</div>${o.ctx ? contextHTML(i.p) : ''}`;
     }
 
     // ---------------- Comentarios ----------------
@@ -3343,7 +3344,7 @@ window.rDetalleUsuarioComs = () => {
     userComs.sort((a, b) => (Number(b.d.fecha) || 0) - (Number(a.d.fecha) || 0));
     
     syD(ct, userComs, 'detu_', i => i.p + '_' + i.c + (i.isReply ? '_' + i.rk : ''), comClass, i =>
-        `<div class="comentario-izq" style="width:100%">${itemInner({ p: i.p, c: i.c, k: i.isReply ? i.rk : null, d: i.d, flat: true, enPag: i.p })}</div>`);
+        `<div class="comentario-izq" style="width:100%">${itemInner({ p: i.p, c: i.c, k: i.isReply ? i.rk : null, d: i.d, flat: true })}</div>${contextHTML(i.p)}`);
 };
 
 // ============================================================
@@ -3725,6 +3726,9 @@ function pnExtra(met, rng, tMin, tMax, ahora) {
     const panel = $('vista-panel'); if (!panel) return;
     const box = document.createElement('div'); box.className = 'dashboard-row pn-extra'; box.id = 'pn-extra';
     panel.appendChild(box);
+    // tarjetas y grafica juntas a la izquierda; "Tiempo real" a la derecha ocupando todo el alto
+    const dr = panel.querySelector('.dashboard-row'), grid = panel.querySelector(':scope > .cards-grid');
+    if (dr && grid && dr.firstElementChild) { const izq = document.createElement('div'); izq.className = 'pn-izq'; const graf = dr.firstElementChild; dr.insertBefore(izq, graf); izq.appendChild(grid); izq.appendChild(graf); }
     box.addEventListener('click', e => {
         const a = e.target.closest('[data-ir]'); if (!a) return;
         e.preventDefault();
