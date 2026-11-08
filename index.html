@@ -1134,6 +1134,90 @@
         #studio-toast { bottom: 18px; width: max-content; max-width: calc(100vw - 28px); text-align: center; }
     }
 
+    /* ================= Resumen del mes (pensado para captura de pantalla) ================= */
+    .res-barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+    .res-barra .header-titulo { margin: 0; }
+    .res-acciones { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .btn-res { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 14px; border-radius: 6px; border: 1px solid var(--border-color); background: transparent; color: var(--text-main); font-size: 13px; font-weight: bold; cursor: pointer; transition: all .2s; }
+    .btn-res:hover { background: var(--bg-hover); color: #fff; }
+    .btn-res svg.i { width: 18px; height: 18px; vertical-align: 0; }
+    .res-salir { display: none; }
+    .res-fit { width: 100%; max-width: 1040px; margin: 0 auto; }
+    .res-card { container-type: inline-size; width: 100%; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; background: var(--bg-panel); box-shadow: 0 10px 40px rgba(0, 0, 0, .35); }
+    .res-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 24px 30px 20px; background: linear-gradient(135deg, #17325e 0%, #2b2160 55%, #161b22 100%); border-bottom: 1px solid var(--border-color); }
+    .res-sitio { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #a9c1ee; font-weight: bold; margin-bottom: 6px; }
+    .res-mes { margin: 0; font-size: 40px; line-height: 1.05; color: #fff; font-weight: bold; }
+    .res-sello { flex-shrink: 0; padding: 6px 12px; border: 1px solid rgba(255, 255, 255, .28); border-radius: 20px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #fff; font-weight: bold; }
+    .res-kpis { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border-color); }
+    .res-kpi { padding: 16px 24px 14px; border-right: 1px solid var(--border-color); min-width: 0; }
+    .res-kpi:last-child { border-right: none; }
+    .res-kpi-l { display: flex; align-items: center; gap: 7px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); font-weight: bold; }
+    .res-kpi-l svg.i { width: 17px; height: 17px; vertical-align: 0; }
+    .res-kpi-v { margin: 6px 0 4px; font-size: 34px; line-height: 1.1; font-weight: bold; color: #fff; }
+    .res-delta { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: bold; color: var(--text-muted); min-height: 16px; }
+    .res-delta em { font-style: normal; font-weight: normal; color: var(--text-muted); }
+    .res-delta svg.i { width: 13px; height: 13px; vertical-align: 0; }
+    .res-delta.sube { color: var(--accent-green); }
+    .res-delta.baja { color: #f85149; }
+    .res-dos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--border-color); }
+    .res-bloque { padding: 18px 22px 14px; border-right: 1px solid var(--border-color); min-width: 0; }
+    .res-bloque:last-child { border-right: none; }
+    .res-tit { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); font-weight: bold; }
+    .res-tit svg.i { width: 18px; height: 18px; vertical-align: 0; }
+    .res-fila { display: flex; align-items: center; gap: 9px; padding: 7px 0; border-top: 1px solid var(--border-color); min-width: 0; }
+    .res-tit + .res-fila { border-top: none; }
+    .res-pos { flex-shrink: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+    .res-num { width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--bg-hover); color: var(--text-muted); font-size: 12px; font-weight: bold; }
+    .res-medal { display: block; width: 32px; height: 32px; }                      /* medallas de pixel art (16 x 16 cuadritos, cada uno de 2 px) */
+    .res-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .res-img { flex-shrink: 0; width: 52px; height: 39px; border-radius: 6px; object-fit: cover; background: var(--bg-hover); }
+    .res-img.res-redonda { width: 38px; height: 38px; border-radius: 50%; }
+    .res-info { flex: 1; min-width: 0; }
+    .res-nom { color: #fff; font-weight: bold; font-size: 14px; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .res-sub { display: flex; align-items: center; gap: 6px; margin-top: 2px; font-size: 11.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; }
+    .res-autor { display: inline-flex; align-items: center; gap: 5px; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+    .res-autor::before { content: "\00b7"; margin-right: 1px; }
+    .res-autor img { width: 14px; height: 14px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .res-val { flex-shrink: 0; text-align: right; line-height: 1.1; }
+    .res-val b { display: block; color: #fff; font-size: 17px; }
+    .res-val span { font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+    .res-fila.res-top .res-nom { font-size: 15px; }
+    .res-fila.res-top .res-val b { font-size: 22px; color: #f2cc60; }
+    .res-desglose { gap: 9px; }
+    .res-d { display: inline-flex; align-items: center; gap: 3px; }
+    .res-d svg.i { width: 12px; height: 12px; vertical-align: 0; }
+    .res-vacio { padding: 12px 0; color: var(--text-muted); font-size: 13px; }
+    .res-pie { padding: 11px 28px; text-align: center; font-size: 11px; letter-spacing: .14em; color: var(--text-muted); }
+    /* modo captura: solo la tarjeta, en pantalla completa (si no cabe, se encoge para que entre completa) */
+    #vista-resumen.captura { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9995; overflow: auto; padding: 16px; background: var(--bg-main); animation: none; }
+    #vista-resumen.captura .res-barra { display: none; }
+    #vista-resumen.captura .res-fit { margin: auto; flex-shrink: 0; }
+    #vista-resumen.captura .res-salir { display: inline-flex; position: fixed; top: 12px; right: 14px; z-index: 2; opacity: .55; background: var(--bg-panel); }
+    #vista-resumen.captura .res-salir:hover { opacity: 1; }
+    @media (max-width: 820px) {
+        .res-barra { margin-bottom: 14px; }
+        .res-head { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 20px 18px; }
+        .res-mes { font-size: 32px; }
+        .res-kpis { grid-template-columns: 1fr 1fr; }
+        .res-kpi { padding: 14px 16px; border-bottom: 1px solid var(--border-color); }
+        .res-kpi:nth-child(2n) { border-right: none; }
+        .res-kpi:nth-last-child(-n+2) { border-bottom: none; }
+        .res-kpi-v { font-size: 28px; }
+        .res-bloque { padding: 16px 18px 12px; }
+        #vista-resumen.captura { padding: 10px 8px; }
+    }
+    /* segun lo ancha que quede la tarjeta: 3 columnas / las 2 de contenido y los usuarios abajo / todo en una columna */
+    @container (max-width: 800px) {
+        .res-dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .res-dos .res-bloque:nth-child(2) { border-right: none; }
+        .res-dos .res-bloque:nth-child(3) { grid-column: 1 / -1; border-top: 1px solid var(--border-color); }
+    }
+    @container (max-width: 540px) {
+        .res-dos { grid-template-columns: minmax(0, 1fr); }
+        .res-dos .res-bloque { border-right: none; border-bottom: 1px solid var(--border-color); }
+        .res-dos .res-bloque:nth-child(3) { border-top: none; border-bottom: none; }
+    }
+
     /* =================== REDISENO (fase 1): menu =================== */
     #sidebar-default { padding: 0 8px; box-sizing: border-box; }
     .sidebar-profile { flex-direction: row; align-items: center; gap: 10px; padding: 0 8px 16px; margin: 0 0 10px; border-bottom: 1px solid var(--border-color); }
@@ -1248,7 +1332,7 @@
     #filtroTipoMod { display: none !important; }
 
     /* ---- Panel ---- */
-    #tipoMetrica, #filtroTiempo { display: none !important; }
+    #tipoMetrica { display: none !important; }
     .rd-per { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
     #vista-panel > div:first-child { flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
     #vista-panel .dashboard-row > .panel-box:last-child { max-width: 340px !important; }
@@ -1492,6 +1576,59 @@
         .rd-tool b { font-size: 13px; }
     }
 
+    /* Resumen (vista normal; el "modo captura" se queda como estaba) */
+    #res-mes { background: none !important; border: none !important; color: var(--text-title) !important; font-size: 17px !important; font-weight: bold; text-align: center; text-align-last: center; -webkit-appearance: none; appearance: none; min-width: 170px; cursor: pointer; padding: 0 6px; font-family: inherit; }
+    #res-mes option { background: var(--bg-panel); font-size: 14px; }
+    #vista-resumen:not(.captura) .res-fit { max-width: none; }
+    #vista-resumen:not(.captura) .res-card { background: none; border: none; box-shadow: none; border-radius: 0; overflow: visible; }
+    #vista-resumen:not(.captura) .res-head, #vista-resumen:not(.captura) .res-pie { display: none; }
+    #vista-resumen:not(.captura) .res-kpis { gap: 12px; border: none; margin-bottom: 16px; }
+    #vista-resumen:not(.captura) .res-kpi { background: var(--bg-panel); border: 1px solid var(--border-color) !important; border-radius: 10px; padding: 14px 16px; }
+    #vista-resumen:not(.captura) .res-dos { gap: 16px; border: none; }
+    #vista-resumen:not(.captura) .res-bloque { background: var(--bg-panel); border: 1px solid var(--border-color) !important; border-radius: 10px; padding: 16px 18px; }
+    #vista-resumen:not(.captura) .res-kpi-l svg, #vista-resumen:not(.captura) .res-tit svg { display: none; }
+    #vista-resumen:not(.captura) .res-tit { font-size: 15px; color: var(--text-title); text-transform: none; letter-spacing: 0; font-weight: bold; }
+    #vista-resumen:not(.captura) .res-kpi-l { letter-spacing: .04em; }
+    .res-extra { display: flex; flex-wrap: wrap; gap: 24px; background: var(--bg-panel); border: 1px solid var(--border-color); border-radius: 10px; padding: 16px 18px; margin-top: 16px; }
+    #vista-resumen.captura .res-extra { border: none; border-top: 1px solid var(--border-color); border-radius: 0; margin: 0; }
+    .res-extra > div { flex: 1 1 200px; }
+    .res-extra-l { font-size: 12px; font-weight: bold; letter-spacing: .04em; color: var(--text-muted); text-transform: uppercase; }
+    .res-extra-v { font-size: 22px; font-weight: bold; color: var(--text-title); margin-top: 4px; }
+    .res-extra-v.sube { color: var(--accent-green); }
+    .res-extra-v.baja { color: #ff7b72; }
+
+
+    /* ---- paso 5: likes con numero ---- */
+    .btn-admin[data-act="like"] { gap: 5px; }
+    .lk-n { font-size: 13px; font-weight: bold; color: var(--text-main); margin-left: 4px; }
+
+    /* ---- paso 5: nivel y XP (del encabezado del sitio) ---- */
+    .nv-chip { display: inline-flex; align-items: baseline; gap: 5px; font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+    .nv-chip b { font-weight: bold; }
+    .nv-cm { margin: 0 0 8px; }
+    .dt-chip.nv-dtchip { display: inline-flex; }
+    .dt-chip.nv-dtchip:empty { display: none; }
+    .nv-det { margin: 4px 0 8px; max-width: 360px; }
+    .nv-det .nv-fila { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; font-size: 13px; color: var(--text-main); }
+    .nv-det .nv-fila b { font-size: 14px; }
+    .nv-det .nv-xp { margin-left: auto; color: var(--text-muted); font-size: 12px; }
+    .nv-barra { height: 8px; border-radius: 4px; background: var(--bg-hover); overflow: hidden; margin-top: 6px; }
+    .nv-barra i { display: block; height: 100%; border-radius: 4px; background: #3fb950; }
+    .nv-sig { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+    .rd-rol .nv-rol { font-weight: bold; }
+
+    /* ---- paso 5: periodos en lista desplegable ---- */
+    #vista-panel .rd-per { display: none !important; }
+    .dt-per #dt-seg, .dt-per #dt-otro { display: none !important; }
+    #filtroTiempo, .rd-persel { min-height: 36px; padding: 0 10px; border-radius: 8px; background: var(--bg-panel); border: 1px solid var(--border-color); color: var(--text-title); font-weight: bold; font-size: 13px; font-family: inherit; cursor: pointer; }
+    #filtroTiempo:hover, .rd-persel:hover { border-color: var(--text-muted); }
+    @media (max-width: 820px) {
+        #filtroTiempo, .rd-persel { width: 100%; min-height: 40px; }
+    }
+
+    /* ---- paso 6: usuarios ---- */
+    .res-xpb { font-size: 9px; font-weight: bold; color: #3fb950; letter-spacing: .04em; margin-right: 1px; }
+
     /* ================= Iconos (blancos, como YouTube Studio) ================= */
     svg.i { width: 1em; height: 1em; fill: #fff; flex-shrink: 0; vertical-align: -0.16em; pointer-events: none; }
     .menu-icon { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; }
@@ -1564,6 +1701,9 @@
                 <div class="menu-item active" data-target="vista-panel">
                     <span class="menu-icon"><svg class="i" aria-hidden="true"><use href="#mbi-dashboard"></use></svg></span><span class="menu-text">Panel</span>
                 </div>
+                <div class="menu-item" data-target="vista-resumen">
+                    <span class="menu-icon"><svg class="i" aria-hidden="true"><use href="#mbi-assessment"></use></svg></span><span class="menu-text">Resumen</span>
+                </div>
                 <div class="menu-item" data-target="vista-contenido">
                     <span class="menu-icon"><svg class="i" aria-hidden="true"><use href="#mbi-layers"></use></svg></span><span class="menu-text">Contenido</span>
                 </div>
@@ -1610,8 +1750,8 @@
                                 <option value="ayer">Ayer</option>
                                 <option value="24h">&Uacute;ltimas 24 horas</option>
                                 <option value="14d">&Uacute;ltimos 14 d&iacute;as</option>
-                                <option value="mespasado">El mes pasado</option>
-                                <option value="aniopasado">El a&ntilde;o pasado</option>
+                                <option value="mespasado">Mes pasado</option>
+                                <option value="aniopasado">A&ntilde;o pasado</option>
                                 <option value="custom">Elegir fechas&hellip;</option>
                             </select>
                         </div>
@@ -1621,18 +1761,18 @@
                             <option value="descargas" selected>Descargas</option>
                             <option value="likes">Likes</option>
                         </select>
-                        <select id="filtroTiempo" class="filtro-select">
+                        <select id="filtroTiempo" class="filtro-select" aria-label="Periodo">
                             <option value="hoy">Hoy</option>
                             <option value="ayer">Ayer</option>
                             <option value="24h">&Uacute;ltimas 24h</option>
                             <option value="7d">&Uacute;ltimos 7 d&iacute;as</option>
                             <option value="14d">&Uacute;ltimos 14 d&iacute;as</option>
                             <option value="mes" selected>Este mes</option>
-                            <option value="mespasado">El mes pasado</option>
+                            <option value="mespasado">Mes pasado</option>
                             <option value="anio">Este a&ntilde;o</option>
-                            <option value="aniopasado">El a&ntilde;o pasado</option>
+                            <option value="aniopasado">A&ntilde;o pasado</option>
                             <option value="siempre">Desde siempre</option>
-                            <option value="custom">Personalizado...</option>
+                            <option value="custom">Elegir fechas&hellip;</option>
                         </select>
                         <div id="cajaFechasCustom" style="display:none; align-items:center; gap:5px;">
                             <input type="date" id="fechaInicio" class="filtro-select" style="padding: 6px;">
@@ -1707,13 +1847,39 @@
             </div>
             
             <!-- VISTA: CONTENIDO (ACTUALIZADA) -->
+            <div id="vista-resumen" class="vista-seccion">
+                <div class="res-barra">
+                    <div class="rd-titulo"><h1 class="header-titulo">Resumen</h1><div class="rd-sub">Lo m&aacute;s importante de cada mes, en una sola pantalla</div></div>
+                    <div class="res-acciones">
+                        <button type="button" id="res-ant" class="btn-res rd-flecha" aria-label="Mes anterior" title="Mes anterior"><svg class="dt-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><select id="res-mes" class="filtro-select" aria-label="Mes del resumen"></select><button type="button" id="res-sig" class="btn-res rd-flecha" aria-label="Mes siguiente" title="Mes siguiente"><svg class="dt-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                        <button type="button" id="res-captura" class="btn-res" title="Muestra solo la tarjeta en pantalla completa, ideal para sacarle captura"><svg class="i" aria-hidden="true"><use href="#mbi-fullscreen"></use></svg> Modo captura</button>
+                    </div>
+                </div>
+                <button type="button" id="res-salir" class="btn-res res-salir" title="Salir del modo captura (Esc)"><svg class="i" aria-hidden="true"><use href="#mbi-close"></use></svg> Salir</button>
+                <div class="res-fit" id="res-fit">
+                <div class="res-card" id="res-card">
+                    <div class="res-head">
+                        <div>
+                            <div class="res-sitio">Mine Blocks Stuffs</div>
+                            <h2 class="res-mes" id="res-titulo">Resumen</h2>
+                        </div>
+                        <div class="res-sello" id="res-sello">Resumen del mes</div>
+                    </div>
+                    <div class="res-kpis" id="res-kpis"></div>
+                    <div class="res-dos" id="res-dos"></div>
+                    <div class="res-extra" id="res-extra"></div>
+                    <div class="res-pie">mineblocksstuffs.weebly.com</div>
+                </div>
+                </div>
+            </div>
+
             <div id="vista-contenido" class="vista-seccion">
                 <div class="rd-headrow"><div class="rd-titulo"><h1 class="header-titulo">Contenido</h1><div class="rd-sub" id="ct-sub"></div></div><div class="rd-buscar"><input type="text" id="inputBuscarContenido" aria-label="Buscar contenido" class="buscador-input" placeholder="Buscar contenido..." ></div></div>
                 <div class="yt-tabs rd-tabs"><div class="tabs-scroll"><div class="yt-tab active" id="tab-cont-todos">Todos</div>
                         <div class="yt-tab" id="tab-cont-mapas">Mapas</div>
                         <div class="yt-tab" id="tab-cont-skins">Skins</div>
                         <div class="yt-tab" id="tab-cont-tp">Texture Packs</div>
-                        <div class="yt-tab" id="tab-cont-perfiles">Perfiles</div></div></div>
+                        <div class="yt-tab" id="tab-cont-perfiles">Usuarios</div></div></div>
                 <div class="rd-toolbar">
                     <select id="filtroTiempoContenido" class="filtro-select" aria-label="Periodo">
                         <option value="hoy">Hoy</option>
@@ -1722,9 +1888,9 @@
                         <option value="7d">&Uacute;ltimos 7 d&iacute;as</option>
                         <option value="14d">&Uacute;ltimos 14 d&iacute;as</option>
                         <option value="mes">Este mes</option>
-                        <option value="mespasado">El mes pasado</option>
+                        <option value="mespasado">Mes pasado</option>
                         <option value="anio">Este a&ntilde;o</option>
-                        <option value="aniopasado">El a&ntilde;o pasado</option>
+                        <option value="aniopasado">A&ntilde;o pasado</option>
                         <option value="siempre" selected>Desde siempre</option>
                     </select>
                     <select id="ordenContenido" class="filtro-select" aria-label="Ordenar">
@@ -1765,7 +1931,7 @@
                 <div class="dt-head">
                     <a id="dt-img-link" class="dt-img" href="#" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img id="dt-img" alt=""></a>
                     <div class="dt-info">
-                        <div class="dt-chips"><span id="dt-tipo" class="dt-chip dt-chip-tipo"></span><span id="dt-rank1" class="dt-chip"></span><span id="dt-rank2" class="dt-chip"></span></div>
+                        <div class="dt-chips"><span id="dt-tipo" class="dt-chip dt-chip-tipo"></span><span id="dt-rank1" class="dt-chip"></span><span id="dt-rank2" class="dt-chip"></span><span id="dt-nivel" class="dt-chip nv-dtchip"></span></div>
                         <h1 id="dt-nombre" class="dt-nombre"></h1>
                         <div class="dt-btns">
                             <a id="dt-abrir" class="dt-btn" href="#" target="_blank" rel="noopener"><svg class="dt-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg> Abrir p&aacute;gina</a>
@@ -1781,8 +1947,8 @@
                             <option value="ayer">Ayer</option>
                             <option value="24h">&Uacute;ltimas 24 horas</option>
                             <option value="14d">&Uacute;ltimos 14 d&iacute;as</option>
-                            <option value="mespasado">El mes pasado</option>
-                            <option value="aniopasado">El a&ntilde;o pasado</option>
+                            <option value="mespasado">Mes pasado</option>
+                            <option value="aniopasado">A&ntilde;o pasado</option>
                         </select>
                     </div>
                 </div>
@@ -1830,9 +1996,9 @@
                                 <option value="14d">&Uacute;ltimos 14 d&iacute;as</option>
                                 <option value="30d">&Uacute;ltimos 30 d&iacute;as</option>
                                 <option value="mes" selected>Este mes</option>
-                                <option value="mespasado">El mes pasado</option>
+                                <option value="mespasado">Mes pasado</option>
                                 <option value="anio">Este a&ntilde;o</option>
-                                <option value="aniopasado">El a&ntilde;o pasado</option>
+                                <option value="aniopasado">A&ntilde;o pasado</option>
                                 <option value="siempre">Desde siempre</option>
                             </select>
                         </div>
@@ -1926,6 +2092,7 @@
                     <img id="det-user-img" style="width:100px;height:100px;object-fit:cover;border-radius:50%;background:var(--bg-hover);flex-shrink:0">
                     <div style="display:flex;flex-direction:column;justify-content:center;flex-grow:1">
                         <h2 id="det-user-nombre" style="margin:0 0 5px;color:var(--text-title);font-size:24px">Cargando...</h2>
+                        <div id="det-user-nivel"></div>
                         <div style="display:flex;gap:20px;color:var(--text-muted);font-weight:bold;font-size:15px;margin-top:10px;">
                             <span id="det-user-comentarios"><svg class="i" aria-hidden="true"><use href="#mbi-comment"></use></svg> 0 Comentarios</span>
                             <span id="det-user-likes"><svg class="i" aria-hidden="true"><use href="#mbi-favorite"></use></svg> 0 Likes</span>
@@ -1968,17 +2135,10 @@
                 "m-172",
                 "m-167",
                 "m-164",
-                "m-167",
-                "m-172",
-                "m-179",
-                "m-185",
-                "m-188",
                 "m-137",
                 "m-27",
                 "m-4",
                 "m-3",
-                "m-4",
-                "m-27",
                 "tp-8",
             ],
         },
@@ -2456,11 +2616,14 @@
     
     function rAll() {
     if (!dRdy) return;
+    usCache = null;
     rDash();
     rMod();
     rdComSub();
+    nvPintarMenu();
     rCom();
     rCont();
+    rRes();
     if (pDetalle) renderDetalleData();
     if (typeof pUser !== 'undefined' && pUser) rDetalleUsuarioComs();
 }
@@ -2521,6 +2684,7 @@
             return true;
         });
         
+        if (actT === 'perfiles') arr.forEach(o => { const g = usGrupo(o.p); o.dTot = usSumaEn(g, cD); o.lTot = usSumaEn(g, cL); o.vTot = usSumaEn(g, cV); });
         let ord = $('ordenContenido').value;
         $('vista-contenido').dataset.ord = ord;
         if (ord === 'likes') arr.sort((a, b) => b.lTot - a.lTot);
@@ -2843,8 +3007,8 @@
         const chip = `<span class="cod-admin${code ? '' : ' sin'}" data-act="lnk" data-p="${esc(o.p)}" data-code="${esc(lcode)}" title="Copiar enlace a este comentario">${code ? '#c-' + esc(code) : 'sin c&oacute;digo'}</span>`;
         return `<img src="${U(d.foto)}" loading="lazy" decoding="async" class="avatar-admin"><div class="contenido-admin"><div class="cabecera-admin"><span class="nombre-admin">${esc(nm)}${starred(d.uid, nm) ? BADGE : ''} ${d.anclado ? '<svg class="i" aria-hidden="true"><use href="#mbi-push_pin"></use></svg>' : ''} ${tagR}</span><span class="fecha-admin">${calcT(f)}</span>${o.enPag ? rdEnPag(o.enPag) : ''}${chip}</div>`
             + `<p class="texto-admin">${prc(d.texto)}</p>${img ? `<img src="${esc(img)}" loading="lazy" decoding="async" class="img-adjunta">` : ''}${corazonChip(d)}`
-            + `<div class="hover-actions"><button class="btn-admin" data-act="like" ${at}>${lk ? '<svg class="i" aria-hidden="true"><use href="#mbi-favorite"></use></svg>' : '<svg class="i" aria-hidden="true"><use href="#mbi-favorite_border"></use></svg>'}</button>`
-            + `${corazonBtn(d, at)}<button class="btn-admin" data-act="resp" ${at} title="Responder"><svg class="i" aria-hidden="true"><use href="#mbi-reply"></use></svg> Responder</button>`
+            + `<div class="hover-actions"><button class="btn-admin" data-act="like" ${at} title="Me gusta">${lk ? '<svg class="i" aria-hidden="true"><use href="#mbi-favorite"></use></svg>' : '<svg class="i" aria-hidden="true"><use href="#mbi-favorite_border"></use></svg>'}<span class="lk-n">${Number(d.likes) || 0}</span></button>`
+            + `${corazonBtn(d, at)}<button class="btn-admin" data-act="resp" ${at} title="Responder"><svg class="i" aria-hidden="true"><use href="#mbi-reply"></use></svg></button>`
             + `<button class="btn-admin" data-act="lnk" data-p="${esc(o.p)}" data-code="${esc(lcode)}" title="Copiar enlace"><svg class="i" aria-hidden="true"><use href="#mbi-link"></use></svg></button></div>${extra || ''}</div>`;
     }
 
@@ -2936,7 +3100,7 @@
             return `<img src="${U(u.f)}" loading="lazy" decoding="async" class="avatar-lg" style="cursor:pointer;" data-act="user" data-k="${esc(u.i)}">
             <div class="usuario-info">
                 <h4 style="cursor:pointer; display:inline-flex; align-items:center; gap:5px;" data-act="user" data-k="${esc(u.i)}">${esc(u.n)} ${st ? BADGE : ''}${u.u ? '<span class="tag-g" title="Comento con su cuenta de Google">Cuenta Google</span>' : ''}</h4>
-                <div class="cm-ult">${u.u ? 'con cuenta Google' : 'sin cuenta'}${u.t ? ' &middot; ' + calcT(u.t) : ''}</div><div class="cm-stats"><div><b>${u.tC}</b><span>comentarios</span></div><div><b>${u.tL}</b><span>likes</span></div><div><b>${u.ps ? u.ps.size : 0}</b><span>p&aacute;ginas</span></div></div>
+                <div class="cm-ult">${u.u ? 'con cuenta Google' : 'sin cuenta'}${u.t ? ' &middot; ' + calcT(u.t) : ''}</div>${nvChip(u.n) ? `<div class="nv-cm">${nvChip(u.n)}</div>` : ''}<div class="cm-stats"><div><b>${u.tC}</b><span>comentarios</span></div><div><b>${u.tL}</b><span>likes</span></div><div><b>${u.ps ? u.ps.size : 0}</b><span>p&aacute;ginas</span></div></div>
             </div>`;
         })) {
             ct.innerHTML = '<p style="color:#8b949e;padding:20px">No se encontraron.</p>';
@@ -2949,9 +3113,9 @@
         let tit = gTit(pDetalle);
         let ic = pageIcon(pDetalle);
         
-        let dTot = (aS.dT[pDetalle] || 0) + (aS.dB[pDetalle] || 0);
-        let lTot = (aS.lT[pDetalle] || 0) + (aS.lB[pDetalle] || 0);
-        let vTot = (aS.vT[pDetalle] || 0) + (aS.vB[pDetalle] || 0);
+        let dTot = usTot(aS.dT, aS.dB);
+        let lTot = usTot(aS.lT, aS.lB);
+        let vTot = usTot(aS.vT, aS.vB);
         let cTot = aS.cP.filter(c => c.p === pDetalle).length;
         
         $('det-img').src = ic;
@@ -3027,14 +3191,14 @@
         let tV = 0, tD = 0, tL = 0, tC = 0;
         
         if (rng === 'siempre') {
-            tV = (aS.vT[pDetalle] || 0) + (aS.vB[pDetalle] || 0);
-            tD = (aS.dT[pDetalle] || 0) + (aS.dB[pDetalle] || 0);
-            tL = (aS.lT[pDetalle] || 0) + (aS.lB[pDetalle] || 0);
+            tV = usTot(aS.vT, aS.vB);
+            tD = usTot(aS.dT, aS.dB);
+            tL = usTot(aS.lT, aS.lB);
             tC = aS.cP.filter(c => c.p === pDetalle).length;
         } else {
-            if (aS.vP) tV = aS.vP.filter(v => v.p === pDetalle && inP(v.f)).length;
-            if (aS.dP) tD = aS.dP.filter(d => d.p === pDetalle && inP(d.f)).length;
-            if (aS.lP) tL = aS.lP.filter(l => l.p === pDetalle && inP(l.f)).length;
+            if (aS.vP) tV = aS.vP.filter(v => usEn(v.p) && inP(v.f)).length;
+            if (aS.dP) tD = aS.dP.filter(d => usEn(d.p) && inP(d.f)).length;
+            if (aS.lP) tL = aS.lP.filter(l => usEn(l.p) && inP(l.f)).length;
             if (aS.cP) tC = aS.cP.filter(c => c.p === pDetalle && inP(c.f)).length;
         }
         
@@ -3045,9 +3209,9 @@
         dtDeltas(rng, tMin, tMax, n);
         
         let dFRaw = [];
-        if (met === 'descargas') dFRaw = aS.dP.filter(i => i.p === pDetalle);
-        else if (met === 'likes') dFRaw = aS.lP.filter(i => i.p === pDetalle);
-        else if (met === 'visitas') dFRaw = aS.vP.filter(i => i.p === pDetalle);
+        if (met === 'descargas') dFRaw = aS.dP.filter(i => usEn(i.p));
+        else if (met === 'likes') dFRaw = aS.lP.filter(i => usEn(i.p));
+        else if (met === 'visitas') dFRaw = aS.vP.filter(i => usEn(i.p));
         else dFRaw = aS.cP.filter(i => i.p === pDetalle);
         
         let dF = rng === 'siempre' ? dFRaw : dFRaw.filter(x => inP(x.f));
@@ -3182,11 +3346,11 @@
         const sk = r && r !== 'null' ? `liked_${p}_${c}_${r}` : `liked_${p}_${c}`;
         const h = localStorage.getItem(sk), rf = aS.db.ref(pk);
         if (h) {
-            if (btn) btn.innerHTML = '<svg class="i" aria-hidden="true"><use href="#mbi-favorite_border"></use></svg>';
+            if (btn) btn.innerHTML = '<svg class="i" aria-hidden="true"><use href="#mbi-favorite_border"></use></svg>' + lkN(btn, -1);
             rf.transaction(v => (v || 0) > 0 ? v - 1 : 0);
             localStorage.removeItem(sk);
         } else {
-            if (btn) btn.innerHTML = '<svg class="i" aria-hidden="true"><use href="#mbi-favorite"></use></svg>';
+            if (btn) btn.innerHTML = '<svg class="i" aria-hidden="true"><use href="#mbi-favorite"></use></svg>' + lkN(btn, 1);
             rf.transaction(v => (v || 0) + 1);
             localStorage.setItem(sk, 'true');
         }
@@ -3305,7 +3469,7 @@ window.abrirDetalleUsuario = (k) => {
     });
     
     $('det-user-img').src = show(safeUrl(foto));
-    $('det-user-nombre').innerText = nombre;
+    $('det-user-nombre').innerText = nombre; nvPintarPersona(nombre);
     $('det-user-comentarios').innerHTML = `<svg class="i" aria-hidden="true"><use href="#mbi-comment"></use></svg> ${cCount} Comentarios`;
     $('det-user-likes').innerHTML = `<svg class="i" aria-hidden="true"><use href="#mbi-favorite"></use></svg> ${lCount} Likes`;
     
@@ -3419,7 +3583,7 @@ function chartAspect() { return window.matchMedia('(max-width: 820px)').matches 
     new MutationObserver(() => { if (mq.matches && sb.classList.contains('collapsed')) sb.classList.remove('collapsed'); }).observe(sb, { attributes: true, attributeFilter: ['class'] });
 
     // titulo y boton de volver segun la pantalla donde estes
-    const NOMBRES = { 'vista-panel': 'Panel', 'vista-contenido': 'Contenido', 'vista-comentarios': 'Comentarios', 'vista-comunidad': 'Comunidad' };
+    const NOMBRES = { 'vista-panel': 'Panel', 'vista-contenido': 'Contenido', 'vista-comentarios': 'Comentarios', 'vista-comunidad': 'Comunidad', 'vista-resumen': 'Resumen' };
     const sync = () => {
         const v = document.querySelector('.vista-seccion.activa'), id = v ? v.id : 'vista-panel';
         let t = 'MBS Studio', link = null;
@@ -3457,6 +3621,126 @@ function chartAspect() { return window.matchMedia('(max-width: 820px)').matches 
     sync();
 })();
 
+// ============================================================
+//  RESUMEN DEL MES (hecho para sacarle captura de pantalla y mandarlo a Discord)
+//  Por defecto es el MES PASADO (se detecta con la fecha de hoy). Los numeros salen de los mismos registros del Panel.
+// ============================================================
+const RES_MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const RI = n => `<svg class="i" aria-hidden="true"><use href="#mbi-${n}"></use></svg>`;
+// Medallas de pixel art para el 1.er, 2.o y 3.er lugar (dibujadas por codigo: ver medallas.py)
+const RES_MEDALLAS = [`<svg class="res-medal" viewBox="0 0 16 16" width="32" height="32" shape-rendering="crispEdges" aria-hidden="true"><path fill="#a32b30" d="M3 0h1v1h-1zM4 1h1v1h-1zM5 2h1v1h-1zM6 3h1v1h-1z"/><path fill="#e5484d" d="M4 0h2v1h-2zM5 1h2v1h-2zM6 2h2v1h-2z"/><path fill="#3b73e6" d="M10 0h2v1h-2zM9 1h2v1h-2zM8 2h2v1h-2zM7 3h2v1h-2z"/><path fill="#2751ad" d="M12 0h1v1h-1zM11 1h1v1h-1zM10 2h1v1h-1zM9 3h1v1h-1z"/><path fill="#4a2c00" d="M6 4h4v1h-4zM4 5h2v1h-2zM10 5h2v1h-2zM3 6h1v1h-1zM12 6h1v1h-1zM3 7h1v1h-1zM7 7h1v1h-1zM12 7h1v1h-1zM2 8h1v1h-1zM6 8h2v1h-2zM13 8h1v1h-1zM2 9h1v1h-1zM7 9h1v1h-1zM13 9h1v1h-1zM2 10h1v1h-1zM7 10h1v1h-1zM13 10h1v1h-1zM2 11h1v1h-1zM6 11h3v1h-3zM13 11h1v1h-1zM3 12h1v1h-1zM12 12h1v1h-1zM3 13h1v1h-1zM12 13h1v1h-1zM4 14h2v1h-2zM10 14h2v1h-2zM6 15h4v1h-4z"/><path fill="#ffd84a" d="M6 5h4v1h-4zM5 6h1v1h-1zM3 8h1v1h-1zM3 9h1v1h-1zM3 10h1v1h-1zM3 11h1v1h-1z"/><path fill="#fff6bf" d="M4 6h1v1h-1zM4 7h1v1h-1z"/><path fill="#f0b90b" d="M6 6h4v1h-4zM5 7h2v1h-2zM8 7h3v1h-3zM4 8h2v1h-2zM8 8h4v1h-4zM4 9h3v1h-3zM8 9h4v1h-4zM4 10h3v1h-3zM8 10h4v1h-4zM4 11h2v1h-2zM9 11h3v1h-3zM5 12h6v1h-6zM6 13h4v1h-4z"/><path fill="#b07d0a" d="M10 6h2v1h-2zM11 7h1v1h-1zM12 8h1v1h-1zM12 9h1v1h-1zM12 10h1v1h-1zM12 11h1v1h-1zM4 12h1v1h-1zM11 12h1v1h-1zM4 13h2v1h-2zM10 13h2v1h-2zM6 14h4v1h-4z"/></svg>`, `<svg class="res-medal" viewBox="0 0 16 16" width="32" height="32" shape-rendering="crispEdges" aria-hidden="true"><path fill="#2751ad" d="M3 0h1v1h-1zM4 1h1v1h-1zM5 2h1v1h-1zM6 3h1v1h-1z"/><path fill="#3b73e6" d="M4 0h2v1h-2zM5 1h2v1h-2zM6 2h2v1h-2z"/><path fill="#e8edf3" d="M10 0h2v1h-2zM9 1h2v1h-2zM8 2h2v1h-2zM7 3h2v1h-2z"/><path fill="#a9b5c4" d="M12 0h1v1h-1zM11 1h1v1h-1zM10 2h1v1h-1zM9 3h1v1h-1z"/><path fill="#262e3a" d="M6 4h4v1h-4zM4 5h2v1h-2zM10 5h2v1h-2zM3 6h1v1h-1zM12 6h1v1h-1zM3 7h1v1h-1zM6 7h3v1h-3zM12 7h1v1h-1zM2 8h1v1h-1zM8 8h1v1h-1zM13 8h1v1h-1zM2 9h1v1h-1zM6 9h3v1h-3zM13 9h1v1h-1zM2 10h1v1h-1zM6 10h1v1h-1zM13 10h1v1h-1zM2 11h1v1h-1zM6 11h3v1h-3zM13 11h1v1h-1zM3 12h1v1h-1zM12 12h1v1h-1zM3 13h1v1h-1zM12 13h1v1h-1zM4 14h2v1h-2zM10 14h2v1h-2zM6 15h4v1h-4z"/><path fill="#dde4ec" d="M6 5h4v1h-4zM5 6h1v1h-1zM3 8h1v1h-1zM3 9h1v1h-1zM3 10h1v1h-1zM3 11h1v1h-1z"/><path fill="#ffffff" d="M4 6h1v1h-1zM4 7h1v1h-1z"/><path fill="#b4bfcc" d="M6 6h4v1h-4zM5 7h1v1h-1zM9 7h2v1h-2zM4 8h4v1h-4zM9 8h3v1h-3zM4 9h2v1h-2zM9 9h3v1h-3zM4 10h2v1h-2zM7 10h5v1h-5zM4 11h2v1h-2zM9 11h3v1h-3zM5 12h6v1h-6zM6 13h4v1h-4z"/><path fill="#78879a" d="M10 6h2v1h-2zM11 7h1v1h-1zM12 8h1v1h-1zM12 9h1v1h-1zM12 10h1v1h-1zM12 11h1v1h-1zM4 12h1v1h-1zM11 12h1v1h-1zM4 13h2v1h-2zM10 13h2v1h-2zM6 14h4v1h-4z"/></svg>`, `<svg class="res-medal" viewBox="0 0 16 16" width="32" height="32" shape-rendering="crispEdges" aria-hidden="true"><path fill="#1f7339" d="M3 0h1v1h-1zM4 1h1v1h-1zM5 2h1v1h-1zM6 3h1v1h-1z"/><path fill="#33a852" d="M4 0h2v1h-2zM5 1h2v1h-2zM6 2h2v1h-2z"/><path fill="#e8d9a8" d="M10 0h2v1h-2zM9 1h2v1h-2zM8 2h2v1h-2zM7 3h2v1h-2z"/><path fill="#b3a06a" d="M12 0h1v1h-1zM11 1h1v1h-1zM10 2h1v1h-1zM9 3h1v1h-1z"/><path fill="#3a1b08" d="M6 4h4v1h-4zM4 5h2v1h-2zM10 5h2v1h-2zM3 6h1v1h-1zM12 6h1v1h-1zM3 7h1v1h-1zM6 7h3v1h-3zM12 7h1v1h-1zM2 8h1v1h-1zM8 8h1v1h-1zM13 8h1v1h-1zM2 9h1v1h-1zM6 9h3v1h-3zM13 9h1v1h-1zM2 10h1v1h-1zM8 10h1v1h-1zM13 10h1v1h-1zM2 11h1v1h-1zM6 11h3v1h-3zM13 11h1v1h-1zM3 12h1v1h-1zM12 12h1v1h-1zM3 13h1v1h-1zM12 13h1v1h-1zM4 14h2v1h-2zM10 14h2v1h-2zM6 15h4v1h-4z"/><path fill="#e5a266" d="M6 5h4v1h-4zM5 6h1v1h-1zM3 8h1v1h-1zM3 9h1v1h-1zM3 10h1v1h-1zM3 11h1v1h-1z"/><path fill="#f8cfa4" d="M4 6h1v1h-1zM4 7h1v1h-1z"/><path fill="#c97a38" d="M6 6h4v1h-4zM5 7h1v1h-1zM9 7h2v1h-2zM4 8h4v1h-4zM9 8h3v1h-3zM4 9h2v1h-2zM9 9h3v1h-3zM4 10h4v1h-4zM9 10h3v1h-3zM4 11h2v1h-2zM9 11h3v1h-3zM5 12h6v1h-6zM6 13h4v1h-4z"/><path fill="#8c4a1c" d="M10 6h2v1h-2zM11 7h1v1h-1zM12 8h1v1h-1zM12 9h1v1h-1zM12 10h1v1h-1zM12 11h1v1h-1zM4 12h1v1h-1zM11 12h1v1h-1zM4 13h2v1h-2zM10 13h2v1h-2zM6 14h4v1h-4z"/></svg>`];
+const RES_LUGAR = ['1.er lugar', '2.o lugar', '3.er lugar'];
+const resPos = i => i < 3
+    ? `<span class="res-pos" title="${RES_LUGAR[i]}">${RES_MEDALLAS[i]}<span class="res-sr">${i + 1}</span></span>`
+    : `<span class="res-pos"><span class="res-num">${i + 1}</span></span>`;
+const resCap = t => t.charAt(0).toUpperCase() + t.slice(1);
+const resNum = n => Number(n || 0).toLocaleString('es-MX');
+const resEsContenido = p => /^(m-|skin-|tp-|tp2-)/.test(p);
+const resEsPerfil = p => p.indexOf('u-') === 0;
+// en el Studio de creadores solo cuentan SUS paginas
+const resMia = p => typeof MIS_PAGINAS === 'undefined' || !Array.isArray(MIS_PAGINAS) || MIS_PAGINAS.indexOf(p) >= 0;
+const resTipo = p => p.indexOf('m-') === 0 ? 'Mapa' : p.indexOf('skin-') === 0 ? 'Skin' : 'Texture Pack';
+
+// Cuenta lo que paso en un mes (a = año, m = mes de 0 a 11): por pagina y en total
+function resCuenta(a, m) {
+    const t0 = new Date(a, m, 1).getTime(), t1 = new Date(a, m + 1, 1).getTime() - 1;
+    const r = { v: Object.create(null), d: Object.create(null), l: Object.create(null), c: Object.create(null), ld: Object.create(null), tv: 0, td: 0, tl: 0, tc: 0 };
+    const suma = (arr, k, tk, ok) => (arr || []).forEach(x => {
+        if (x.f >= t0 && x.f <= t1 && resMia(x.p) && (!ok || ok(x))) { r[k][x.p] = (r[k][x.p] || 0) + 1; r[tk]++; }
+    });
+    suma(aS.vP, 'v', 'tv'); suma(aS.dP, 'd', 'td'); suma(aS.lP, 'l', 'tl');
+    // ultima descarga de cada pagina en ese mes (sirve para desempatar el ranking)
+    (aS.dP || []).forEach(x => { if (x.f >= t0 && x.f <= t1 && resMia(x.p) && x.f > (r.ld[x.p] || 0)) r.ld[x.p] = x.f; });
+    suma(aS.cP, 'c', 'tc', x => x.pub !== false);      // solo lo que ve cualquier visitante
+    return r;
+}
+// Top usuarios = UN solo ranking que suma las tres cosas que recibio el perfil ese mes: todo vale 1 punto (cada visita, cada like y cada comentario).
+const RES_PESO = { v: 1, l: 1, c: 1 };
+function resTopUsuarios(r, n) {
+    const ids = new Set([r.v, r.l, r.c].reduce((t, o) => t.concat(Object.keys(o)), []).filter(resEsPerfil));
+    return [...ids].map(p => { const v = r.v[p] || 0, l = r.l[p] || 0, c = r.c[p] || 0; return { p, v, l, c, n: v * RES_PESO.v + l * RES_PESO.l + c * RES_PESO.c }; })
+        .filter(o => o.n > 0).sort((a, b) => b.n - a.n || b.c - a.c || b.l - a.l || gTit(a.p).localeCompare(gTit(b.p))).slice(0, n);
+}
+// Si dos tienen las mismas descargas, va primero el que se descargo mas recientemente (rec = fecha de su ultima descarga)
+const resTop = (mapa, filtro, n, rec) => Object.keys(mapa).filter(filtro).map(p => ({ p, n: mapa[p] }))
+    .sort((a, b) => b.n - a.n || (rec ? (rec[b.p] || 0) - (rec[a.p] || 0) : 0) || gTit(a.p).localeCompare(gTit(b.p))).slice(0, n);
+
+// La lista de meses: el mes en curso y los 11 anteriores. Se deja escogido el MES PASADO.
+function resOpciones() {
+    const hoy = new Date(), sel = $('res-mes'), base = String(hoy.getFullYear() * 12 + hoy.getMonth());
+    if (sel.dataset.base === base) return;
+    sel.dataset.base = base;
+    let h = '<option value="siempre">Desde siempre</option>';
+    for (let i = 0; i < 12; i++) {
+        const d = new Date(hoy.getFullYear(), hoy.getMonth() - i, 1);
+        h += `<option value="${d.getFullYear()}-${d.getMonth()}">${resCap(RES_MESES[d.getMonth()])} ${d.getFullYear()}${i === 0 ? ' (en curso)' : i === 1 ? ' (mes pasado)' : ''}</option>`;
+    }
+    sel.innerHTML = h;
+    sel.selectedIndex = 2;     // el mes pasado (la primera opcion es "Desde siempre")
+}
+
+function resDelta(ahora, antes, nomAntes) {
+    if (!antes) return '<span class="res-delta">&nbsp;</span>';       // el mes anterior no tuvo nada: no hay con que comparar
+    const p = Math.round((ahora - antes) / antes * 100);
+    return `<span class="res-delta ${p > 0 ? 'sube' : p < 0 ? 'baja' : ''}">${p > 0 ? RI('arrow_upward') : p < 0 ? RI('arrow_downward') : ''}${p === 0 ? 'Igual' : Math.abs(p) + '%'} <em>vs ${esc(nomAntes)}</em></span>`;
+}
+
+function resFilaContenido(o, i, unidad) {
+    const au = aS.aP && aS.aP[o.p], an = au && au.nombre ? String(au.nombre) : '';
+    const autor = an ? `<span class="res-autor"><img src="${U(au.avatar)}" alt="" loading="lazy" decoding="async">${esc(an)}</span>` : '';
+    return `<div class="res-fila${i === 0 ? ' res-top' : ''}">${resPos(i)}<img class="res-img" src="${esc(pageIcon(o.p))}" alt="" loading="lazy" decoding="async"><div class="res-info"><div class="res-nom">${esc(gTit(o.p))}</div><div class="res-sub">${resTipo(o.p)}${autor}</div></div><div class="res-val"><b>${resNum(o.n)}</b><span>${unidad}</span></div></div>`;
+}
+function resFilaUsuario(o, i, unidad) {
+    const d = (ic, n, t) => `<span class="res-d" title="${t}">${RI(ic)}${resNum(n)}</span>`;
+    return `<div class="res-fila${i === 0 ? ' res-top' : ''}">${resPos(i)}<img class="res-img res-redonda" src="${esc(pageIcon(o.p))}" alt="" loading="lazy" decoding="async"><div class="res-info"><div class="res-nom">${esc(gTit(o.p))}</div><div class="res-sub res-desglose">${d('visibility', o.v, 'Visitas')}${d('favorite', o.l, 'Likes')}${d('comment', o.c, 'Comentarios')}</div></div><div class="res-val"><b>${resNum(o.n)}</b><span>${unidad}</span></div></div>`;
+}
+const resBloque = (cl, ic, tit, arr, fila, unidad, vacio) =>
+    `<div class="${cl}"><div class="res-tit">${RI(ic)}<span>${tit}</span></div>${arr.length ? arr.map((o, i) => fila(o, i, unidad)).join('') : `<div class="res-vacio">${vacio}</div>`}</div>`;
+
+function rRes(forzar) {
+    const vista = $('vista-resumen');
+    if (!vista || !dRdy) return;
+    if (!forzar && !vista.classList.contains('activa')) return;     // si no se esta viendo, no se calcula nada
+    resOpciones();
+    if ($('res-mes').value === 'siempre') { resSiempre(); return; }
+    if ($('res-sello')) $('res-sello').textContent = 'Resumen del mes';
+    const [a, m] = $('res-mes').value.split('-').map(Number);
+    const ant = new Date(a, m - 1, 1), nomAnt = RES_MESES[ant.getMonth()];
+    const r = resCuenta(a, m), p = resCuenta(ant.getFullYear(), ant.getMonth());
+
+    $('res-titulo').textContent = resCap(RES_MESES[m]) + ' ' + a;
+    $('res-kpis').innerHTML = [
+        ['visibility', r.tv, p.tv, 'Visitas'], ['download', r.td, p.td, 'Descargas'], ['favorite', r.tl, p.tl, 'Likes'], ['comment', r.tc, p.tc, 'Comentarios']
+    ].map(k => `<div class="res-kpi"><div class="res-kpi-l">${RI(k[0])}<span>${k[3]}</span></div><div class="res-kpi-v">${resNum(k[1])}</div>${resDelta(k[1], k[2], nomAnt)}</div>`).join('');
+
+    $('res-dos').innerHTML =
+        resBloque('res-bloque', 'download', 'Más descargado', resTop(r.d, resEsContenido, 5, r.ld), resFilaContenido, 'descargas', 'Sin descargas este mes') +
+        resBloque('res-bloque', 'visibility', 'Más visto', resTop(r.v, resEsContenido, 5), resFilaContenido, 'visitas', 'Sin visitas este mes') +
+        resBloque('res-bloque', 'favorite', 'Top likes', resTop(r.l, resEsContenido, 5), resFilaContenido, 'likes', 'Sin likes este mes');
+    rdResExtra(a, m, r, p, nomAnt);
+
+    resAjusta();
+}
+$('res-mes').addEventListener('change', () => rRes(true));
+document.querySelector('.menu-item[data-target="vista-resumen"]').addEventListener('click', () => rRes(true));
+// En el modo captura la tarjeta se encoge sola si no cabe completa en la ventana (asi la captura sale entera)
+function resAjusta() {
+    const v = $('vista-resumen'), fit = $('res-fit'), card = $('res-card');
+    card.style.cssText = ''; fit.style.cssText = '';
+    if (!v.classList.contains('captura') || window.innerWidth <= 820) return;
+    const w = 1040;
+    card.style.width = w + 'px';
+    const h = card.offsetHeight, s = Math.min(1, (window.innerWidth - 32) / w, (window.innerHeight - 32) / h);
+    if (s >= 1) return;
+    card.style.transformOrigin = '0 0'; card.style.transform = `scale(${s})`;
+    fit.style.width = Math.round(w * s) + 'px'; fit.style.height = Math.round(h * s) + 'px';
+}
+const resCaptura = on => { $('vista-resumen').classList.toggle('captura', on); resAjusta(); };
+window.addEventListener('resize', resAjusta);
+$('res-captura').addEventListener('click', () => resCaptura(true));
+$('res-salir').addEventListener('click', () => resCaptura(false));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('vista-resumen').classList.contains('captura')) resCaptura(false); });
+
 
 // ============================================================
 //  REDISENO fase 1: vista detallada
@@ -3466,7 +3750,7 @@ function dtTipo(p) {
     if (p.indexOf('m-') === 0) return { k: 'm', uno: 'Mapa', plural: 'mapas', color: '#3fb950' };
     if (p.indexOf('skin-') === 0) return { k: 'skin', uno: 'Skin', plural: 'skins', color: '#d29922' };
     if (p.indexOf('tp-') === 0 || p.indexOf('tp2-') === 0) return { k: 'tp', uno: 'Texture Pack', plural: 'texture packs', color: '#a5d6ff' };
-    if (p.indexOf('u-') === 0) return { k: 'u', uno: 'Perfil', plural: 'perfiles', color: '#ff7b72' };
+    if (p.indexOf('u-') === 0) return { k: 'u', uno: 'Usuario', plural: 'usuarios', color: '#ff7b72' };
     return { k: '', uno: 'Página', plural: 'páginas', color: '#8b949e' };
 }
 // numero de meses entre el primer dato y hoy (para decidir si "Desde siempre" va por mes o por ano)
@@ -3492,13 +3776,14 @@ function dtCabecera(tit, ic) {
         const mismas = [...todas].filter(x => dtTipo(x).k === tp.k);
         const vis = x => (aS.vT[x] || 0) + (aS.vB[x] || 0), des = x => (aS.dT[x] || 0) + (aS.dB[x] || 0);
         const lugar = f => 1 + mismas.filter(x => f(x) > f(p)).length;
-        if (tp.k === 'u') { if (vis(p) > 0) r1 = '#' + lugar(vis) + ' de ' + mismas.length + ' ' + tp.plural + ' en visitas'; }
+        if (tp.k === 'u') { const vu = x => usSuma(x).v; if (vu(p) > 0) r1 = '#' + lugar(vu) + ' de ' + mismas.length + ' ' + tp.plural + ' en visitas'; }
         else {
             if (des(p) > 0) r1 = '#' + lugar(des) + ' de ' + mismas.length + ' ' + tp.plural + ' en descargas';
             if (vis(p) > 0) r2 = '#' + lugar(vis) + (r1 ? '' : ' de ' + mismas.length + ' ' + tp.plural) + ' en visitas';
         }
     }
     $('dt-rank1').textContent = r1; $('dt-rank2').textContent = r2;
+    nvPintarPagina(tit, p, tp.k);
 }
 // texto corto de "sube / baja": flecha + cuanto (de color) y "vs. anterior"; el detalle completo queda en el globito (title)
 // con que se compara: "Este mes" contra los mismos dias del mes pasado ("vs. octubre"), "Este ano" contra el ano pasado,
@@ -3533,7 +3818,7 @@ function dtDeltas(rng, tMin, tMax, ahora) {
         const el = $('dt-d-' + k); if (!el) return;
         if (rng === 'siempre') { el.textContent = 'en total'; el.className = 'dt-delta'; return; }
         const fin = Math.min(tMax, ahora), largo = fin - tMin;
-        const L = (listas[k] || []).filter(x => x.p === pDetalle);
+        const L = (listas[k] || []).filter(x => k === 'comentarios' ? x.p === pDetalle : usEn(x.p));
         const w = rdVentana(rng, tMin, fin);
         const cur = L.filter(x => x.f >= tMin && x.f <= fin).length, prev = L.filter(x => x.f >= w.a && x.f < w.b).length;
         const r = rdDelta(cur, prev, k, w.etq);
@@ -3626,7 +3911,7 @@ document.querySelectorAll('#rd-chips-mod .rd-chip').forEach(b => b.addEventListe
 // Resumen: flechas para cambiar de mes (la lista va del mes mas nuevo al mas viejo)
 (function () {
     const s = $('res-mes'); if (!s) return;
-    const sync = () => { $('res-ant').disabled = s.selectedIndex >= s.options.length - 1; $('res-sig').disabled = s.selectedIndex <= 0; };
+    const sync = () => { $('res-ant').disabled = s.selectedIndex >= s.options.length - 1; $('res-sig').disabled = s.selectedIndex <= 0 || s.options[s.selectedIndex - 1].value === 'siempre'; };
     const mover = d => { const i = s.selectedIndex + d; if (i < 0 || i >= s.options.length) return; s.selectedIndex = i; s.dispatchEvent(new Event('change')); sync(); };
     $('res-ant').addEventListener('click', () => mover(1));
     $('res-sig').addEventListener('click', () => mover(-1));
@@ -3639,7 +3924,7 @@ document.querySelectorAll('#rd-chips-mod .rd-chip').forEach(b => b.addEventListe
 (function () {
     const app = $('studio-app'); if (!app) return;
     const items = [...document.querySelectorAll('#sidebar-default .menu-item[data-target]')];
-    const max = items.length > 5 ? 4 : items.length;
+    const max = items.length > 4 ? 4 : items.length;   // 4 botones + "Mas"
     const nav = document.createElement('nav');
     nav.className = 'rd-nav'; nav.id = 'rd-nav'; nav.setAttribute('aria-label', 'Menú');
     const botones = items.slice(0, max).map(it => {
@@ -3807,6 +4092,279 @@ function rdCmOrden(ar) {
 });
 if ($('cm-orden')) $('cm-orden').addEventListener('change', () => rCom());
 
+// --- Resumen: fila de datos extra
+function rdResExtra(a, m, r, p, nomAnt) {
+    const box = $('res-extra'); if (!box) return;
+    const t0 = new Date(a, m, 1).getTime(), t1 = new Date(a, m + 1, 1).getTime() - 1;
+    // personas que comentaron por PRIMERA vez este mes
+    const prim = Object.create(null);
+    (aS.cP || []).forEach(c => { const k = idKey(c.u, c.n); if (!(k in prim) || c.f < prim[k]) prim[k] = c.f; });
+    const nuevos = Object.keys(prim).filter(k => prim[k] >= t0 && prim[k] <= t1).length;
+    // dia con mas descargas
+    const dias = Object.create(null);
+    (aS.dP || []).forEach(x => { if (x.f >= t0 && x.f <= t1) { const d = new Date(x.f).getDate(); dias[d] = (dias[d] || 0) + 1; } });
+    let mejor = null; Object.keys(dias).forEach(d => { if (!mejor || dias[d] > dias[mejor]) mejor = d; });
+    // comparado con el mes anterior (visitas)
+    let cmp = 'Sin datos', cl = '';
+    if (p.tv) { const pc = Math.round(100 * (r.tv - p.tv) / p.tv); cmp = pc ? (pc > 0 ? '+' : '−') + Math.abs(pc) + '% en visitas' : 'Igual en visitas'; cl = pc > 0 ? 'sube' : pc < 0 ? 'baja' : ''; }
+    else if (r.tv) { cmp = '+' + r.tv.toLocaleString() + ' visitas'; cl = 'sube'; }
+    box.innerHTML = `<div><div class="res-extra-l">Personas nuevas que comentaron</div><div class="res-extra-v">${nuevos.toLocaleString()}</div></div>`
+        + `<div><div class="res-extra-l">Día con más descargas</div><div class="res-extra-v">${mejor ? mejor + ' de ' + RES_MESES[m] + ' · ' + dias[mejor].toLocaleString() : 'Sin descargas'}</div></div>`
+        + `<div><div class="res-extra-l">Comparado con ${nomAnt}</div><div class="res-extra-v ${cl}">${cmp}</div></div>`;
+}
+
+
+// ============================================================
+//  Likes: el numero junto al corazon de cada comentario
+// ============================================================
+function lkN(btn, d) {
+    const e = btn && btn.querySelector('.lk-n');
+    const n = Math.max(0, (parseInt(e ? e.textContent : '0', 10) || 0) + d);
+    return '<span class="lk-n">' + n + '</span>';
+}
+
+// ============================================================
+//  NIVEL y XP: se leen del encabezado del sitio (window.DB_USUARIOS),
+//  con la misma formula del encabezado. No se guarda nada aqui.
+// ============================================================
+const NV_NIVELES = [
+    {l:0,t:'Aprendiz',x:8},{l:1,t:'Explorador',x:16},{l:2,t:'Minero',x:32},{l:3,t:'Constructor',x:64},
+    {l:4,t:'Hierro',x:128},{l:5,t:'Oro',x:192},{l:6,t:'Diamante',x:288},{l:7,t:'Viajero Dimensional',x:432},
+    {l:8,t:'Viajero Multidimensional',x:648},{l:9,t:'Domador de Dragones',x:972},{l:10,t:'Veterano',x:1458}
+];
+let nvLeido = null, nvPedido = false, nvUltPersona = '';
+const nvSinAc = s => String(s == null ? '' : s).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const nvNorm = s => nvSinAc(s).toLowerCase().replace(/\s+/g, ' ').trim();
+const nvSlug = s => nvSinAc(s).toLowerCase().replace(/[\[\]()]/g, '').replace(/[^a-z0-9_]+/g, '_');
+const nvFmt = n => String(Math.round(n * 100) / 100).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+function nvDB() {
+    const d = window.DB_USUARIOS;
+    if (d && typeof d === 'object') return d;
+    if (nvLeido) return nvLeido;
+    if (!nvPedido) { nvPedido = true; nvTraer(); }
+    return null;
+}
+// sin encabezado en esta pagina: se lee la lista de la pagina principal del sitio (solo nombres y creaciones).
+// Solo dentro de Weebly (desde otro sitio, como GitHub, el navegador no deja leerla).
+function nvTraer() {
+    if (!/(^|\.)weebly\.com$/i.test(location.hostname)) return;
+    try {
+        fetch('/', { cache: 'no-store' }).then(r => r.text()).then(t => {
+            const i = t.indexOf('DB_USUARIOS');
+            if (i < 0) return;
+            const trozo = t.slice(i, i + 300000), o = {};
+            const re = /["']([^"'\n]{1,80})["']\s*:\s*\{\s*creaciones\s*:\s*(-?[\d.]+)/g;
+            let m;
+            while ((m = re.exec(trozo))) o[m[1]] = { creaciones: Number(m[2]) || 0 };
+            if (Object.keys(o).length) { nvLeido = o; nvRefrescar(); }
+        }).catch(() => {});
+    } catch (e) {}
+}
+// busca a la persona por su nombre (sin acentos ni mayusculas) o por su pagina de perfil (u-nombre)
+function nvBuscar(nombre, pag) {
+    const d = nvDB();
+    if (!d) return null;
+    const q = nvNorm(nombre), sl = pag && /^u-/.test(pag) ? String(pag).slice(2).toLowerCase() : '';
+    for (const k in d) {
+        if (!Object.prototype.hasOwnProperty.call(d, k)) continue;
+        const v = d[k];
+        if (!v || typeof v !== 'object' || !('creaciones' in v)) continue;
+        if ((q && nvNorm(k) === q) || (sl && nvSlug(k) === sl)) return { nombre: k, creaciones: Number(v.creaciones) || 0 };
+    }
+    return null;
+}
+function nvCalc(cre) {
+    const xp = 8 * cre;
+    let n = NV_NIVELES[0], r = NV_NIVELES[0];
+    for (let e = 0; e < NV_NIVELES.length; e++) {
+        if (xp < NV_NIVELES[e].x) { r = NV_NIVELES[e]; break; }
+        n = NV_NIVELES[e];
+    }
+    const desde = n.l > 0 ? n.x : 0, hasta = n.l === 10 ? n.x : r.x;
+    const pct = Math.min(100, Math.max(0, n.l < 10 ? (xp - desde) / (hasta - desde) * 100 : 100));
+    return { xp, nivel: n, siguiente: r, hasta, pct };
+}
+function nvEstilo(l) {
+    if (l < 7) return 'color:' + ({0:'#0064ff',1:'red',2:'yellow',3:'cyan',4:'lime',5:'#ff69b4',6:'#bf00ff'}[l]) + ' !important;';
+    return 'background:' + ({
+        7:'linear-gradient(180deg,#ffffff 10%,#a0a0a0 50%,#ffffff 90%)',
+        8:'linear-gradient(180deg,#ffc58a 10%,#a6602c 60%,#ffc58a 90%)',
+        9:'linear-gradient(180deg,#e8e8e8 10%,#808080 50%,#e8e8e8 90%)',
+        10:'linear-gradient(180deg,#fff2cc 10%,#d4af37 50%,#fff2cc 90%)'
+    }[l]) + ';-webkit-background-clip:text;background-clip:text;color:transparent !important;-webkit-text-fill-color:transparent;display:inline-block;';
+}
+function nvTitulo(c) {
+    return c.nivel.l >= 10 ? `${nvFmt(c.xp)} XP \u00b7 nivel m\u00e1ximo`
+        : `${nvFmt(c.xp)} XP \u00b7 faltan ${nvFmt(c.hasta - c.xp)} XP para el nivel ${c.siguiente.l} (${c.siguiente.t})`;
+}
+// "Nivel 8 Viajero Multidimensional" (chiquito, para tarjetas)
+function nvChip(nombre, pag) {
+    const u = nvBuscar(nombre, pag);
+    if (!u) return '';
+    const c = nvCalc(u.creaciones);
+    return `<span class="nv-chip" title="${esc(nvTitulo(c))}"><b style="${nvEstilo(c.nivel.l)}">Nivel ${c.nivel.l}</b><span>${esc(c.nivel.t)}</span></span>`;
+}
+// nivel + barra de XP (para la vista de una persona)
+function nvBloque(nombre, pag) {
+    const u = nvBuscar(nombre, pag);
+    if (!u) return '';
+    const c = nvCalc(u.creaciones);
+    const sig = c.nivel.l >= 10 ? 'Nivel m&aacute;ximo' : `Faltan ${nvFmt(c.hasta - c.xp)} XP para el nivel ${c.siguiente.l} &middot; ${esc(c.siguiente.t)}`;
+    return `<div class="nv-det"><div class="nv-fila"><b style="${nvEstilo(c.nivel.l)}">Nivel ${c.nivel.l}</b><span>${esc(c.nivel.t)}</span>`
+        + `<span class="nv-xp">${nvFmt(c.xp)}${c.nivel.l < 10 ? ' / ' + nvFmt(c.hasta) : ''} XP</span></div>`
+        + `<div class="nv-barra"><i style="width:${c.pct.toFixed(1)}%"></i></div><div class="nv-sig">${sig}</div></div>`;
+}
+function nvPintarPersona(nombre) {
+    nvUltPersona = nombre;
+    const e = $('det-user-nivel');
+    if (e) e.innerHTML = nvBloque(nombre);
+}
+function nvPintarPagina(tit, p, k) {
+    const e = $('dt-nivel');
+    if (!e) return;
+    const u = k === 'u' ? nvBuscar(tit, p) : null;
+    if (!u) { e.innerHTML = ''; e.removeAttribute('title'); return; }
+    const c = nvCalc(u.creaciones);
+    e.title = nvTitulo(c);
+    e.innerHTML = `<b style="${nvEstilo(c.nivel.l)}">Nivel ${c.nivel.l}</b>&nbsp;${esc(c.nivel.t)} &middot; ${nvFmt(c.xp)} XP`;
+}
+// menu: "Administradora \u00b7 Nivel 8"
+function nvPintarMenu() {
+    const r = document.querySelector('#sidebar-default .rd-rol') || document.querySelector('.rd-rol');
+    const n = document.querySelector('.rd-perfil-txt .sidebar-username');
+    if (!r || !n) return;
+    if (r.dataset.base == null) r.dataset.base = r.textContent;
+    const u = nvBuscar(n.textContent);
+    if (!u) { r.textContent = r.dataset.base; r.removeAttribute('title'); return; }
+    const c = nvCalc(u.creaciones);
+    r.title = `${c.nivel.t} \u00b7 ${nvTitulo(c)}`;
+    r.innerHTML = `${esc(r.dataset.base)} &middot; <span class="nv-rol" style="${nvEstilo(c.nivel.l)}">Nivel ${c.nivel.l}</span>`;
+}
+function nvRefrescar() {
+    try { nvPintarMenu(); } catch (e) {}
+    try { if (nvUltPersona) nvPintarPersona(nvUltPersona); } catch (e) {}
+    try { rCom(); } catch (e) {}
+    try { if (pDetalle && $('dt-nombre')) nvPintarPagina($('dt-nombre').textContent, pDetalle, dtTipo(pDetalle).k); } catch (e) {}
+}
+nvPintarMenu();
+
+// ============================================================
+//  Periodos: lista desplegable tambien en la vista detallada
+// ============================================================
+(function () {
+    const s = $('det-filtroTiempo'), per = document.querySelector('.dt-per');
+    if (!s || !per) return;
+    s.classList.add('rd-persel');
+    s.setAttribute('aria-label', 'Periodo');
+    per.insertBefore(s, per.firstChild);
+})();
+
+// ============================================================
+//  USUARIOS: de quien es cada mapa, skin o texture pack.
+//  Se reconoce por el NOMBRE del autor guardado en cada pagina (autores_paginas),
+//  comparado con las paginas de usuario (u-nombre o su titulo).
+// ============================================================
+const usNorm = t => String(t == null ? '' : t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/^perfil de /, '').replace(/[^a-z0-9]/g, '');
+const usEsCont = p => /^(m-|skin-|tp-|tp2-)/.test(p);
+let usCache = null;
+function usMapa() {
+    if (usCache && Date.now() - usCache.t < 3000) return usCache;
+    const pgs = new Set();
+    [aS.dT, aS.dB, aS.vT, aS.vB, aS.lT, aS.lB, aS.aP].forEach(o => { if (o) Object.keys(o).forEach(k => pgs.add(k)); });
+    const mias = typeof MIS_PAGINAS !== 'undefined' && Array.isArray(MIS_PAGINAS) ? MIS_PAGINAS : null;
+    if (mias) mias.forEach(p => pgs.add(p));
+    const perfiles = [...pgs].filter(p => p.indexOf('u-') === 0 && (!mias || mias.indexOf(p) >= 0));
+    const clave = Object.create(null);
+    perfiles.forEach(u => [usNorm(u.slice(2)), usNorm(gTit(u))].forEach(k => { if (k && !(k in clave)) clave[k] = u; }));
+    // Studio de creadores: si el creador tiene una sola pagina de usuario, todo su contenido es suyo
+    const solo = mias && perfiles.length === 1 ? perfiles[0] : '';
+    const dueno = Object.create(null), grupos = Object.create(null), sin = [];
+    perfiles.forEach(u => { grupos[u] = [u]; });
+    pgs.forEach(p => {
+        if (!usEsCont(p) || (mias && mias.indexOf(p) < 0)) return;
+        const au = aS.aP && aS.aP[p], n = au && au.nombre ? String(au.nombre).trim() : '';
+        const u = (n && clave[usNorm(n)]) || solo;
+        if (u) { dueno[p] = u; grupos[u].push(p); }
+        else sin.push({ p, autor: n });
+    });
+    usCache = { t: Date.now(), perfiles, dueno, grupos, sin };
+    return usCache;
+}
+// todas las paginas que cuentan para una pagina: un usuario = su pagina + su contenido; lo demas = solo esa pagina
+const usGrupo = p => (p && p.indexOf('u-') === 0 && usMapa().grupos[p]) || [p];
+const usSumaEn = (g, m) => g.reduce((t, p) => t + (m[p] || 0), 0);
+function usSuma(u) {
+    const g = usGrupo(u), s = (T, B) => g.reduce((t, p) => t + ((T && T[p]) || 0) + ((B && B[p]) || 0), 0);
+    return { v: s(aS.vT, aS.vB), d: s(aS.dT, aS.dB), l: s(aS.lT, aS.lB) };
+}
+// lo que esta abierto en la vista detallada
+let usDetK = null, usDetC = null, usDetSet = null;
+function usDetGrupo() {
+    const m = usMapa();
+    if (usDetK !== pDetalle || usDetC !== m) { usDetK = pDetalle; usDetC = m; usDetSet = new Set(usGrupo(pDetalle)); }
+    return usDetSet;
+}
+const usEn = p => usDetGrupo().has(p);
+const usTot = (T, B) => [...usDetGrupo()].reduce((t, p) => t + ((T && T[p]) || 0) + ((B && B[p]) || 0), 0);
+
+// ============================================================
+//  RESUMEN "DESDE SIEMPRE"
+// ============================================================
+function resCuentaSiempre() {
+    const r = { v: Object.create(null), d: Object.create(null), l: Object.create(null), c: Object.create(null), ld: Object.create(null), tv: 0, td: 0, tl: 0, tc: 0 };
+    const pon = (k, tk, T, B) => new Set([...Object.keys(T || {}), ...Object.keys(B || {})]).forEach(p => {
+        if (!resMia(p)) return;
+        const n = ((T && T[p]) || 0) + ((B && B[p]) || 0);
+        if (n > 0) { r[k][p] = n; r[tk] += n; }
+    });
+    pon('v', 'tv', aS.vT, aS.vB); pon('d', 'td', aS.dT, aS.dB); pon('l', 'tl', aS.lT, aS.lB);
+    (aS.dP || []).forEach(x => { if (resMia(x.p) && x.f > (r.ld[x.p] || 0)) r.ld[x.p] = x.f; });
+    (aS.cP || []).forEach(x => { if (resMia(x.p) && x.pub !== false) { r.c[x.p] = (r.c[x.p] || 0) + 1; r.tc++; } });
+    return r;
+}
+// Top usuarios de siempre: descargas + visitas + likes de su pagina y de TODO su contenido + su XP
+function resTopUsuariosSiempre(r, n) {
+    const m = usMapa();
+    return m.perfiles.map(u => {
+        const g = m.grupos[u] || [u];
+        const d = usSumaEn(g, r.d), v = usSumaEn(g, r.v), l = usSumaEn(g, r.l);
+        const x = nvBuscar(gTit(u), u), xp = x ? Math.round(8 * x.creaciones * 100) / 100 : 0;
+        return { p: u, d, v, l, xp, nc: g.length - 1, n: Math.round((d + v + l + xp) * 100) / 100 };
+    }).filter(o => o.n > 0).sort((a, b) => b.n - a.n || b.xp - a.xp || b.d - a.d || gTit(a.p).localeCompare(gTit(b.p))).slice(0, n);
+}
+function resFilaUsuarioSiempre(o, i, unidad) {
+    const d = (ic, n, t) => `<span class="res-d" title="${t}">${RI(ic)}${resNum(n)}</span>`;
+    const xp = `<span class="res-d" title="XP"><b class="res-xpb">XP</b>${resNum(o.xp)}</span>`;
+    return `<div class="res-fila${i === 0 ? ' res-top' : ''}">${resPos(i)}<img class="res-img res-redonda" src="${esc(pageIcon(o.p))}" alt="" loading="lazy" decoding="async"><div class="res-info"><div class="res-nom">${esc(gTit(o.p))}</div><div class="res-sub res-desglose">${d('download', o.d, 'Descargas')}${d('visibility', o.v, 'Visitas')}${d('favorite', o.l, 'Likes')}${xp}</div></div><div class="res-val"><b>${resNum(o.n)}</b><span>${unidad}</span></div></div>`;
+}
+function resSiempre() {
+    const r = resCuentaSiempre(), adm = typeof MIS_PAGINAS === 'undefined';
+    $('res-titulo').textContent = 'Desde siempre';
+    if ($('res-sello')) $('res-sello').textContent = 'Resumen total';
+    $('res-kpis').innerHTML = [
+        ['visibility', r.tv, 'Visitas'], ['download', r.td, 'Descargas'], ['favorite', r.tl, 'Likes'], ['comment', r.tc, 'Comentarios']
+    ].map(k => `<div class="res-kpi"><div class="res-kpi-l">${RI(k[0])}<span>${k[2]}</span></div><div class="res-kpi-v">${resNum(k[1])}</div><span class="res-delta">en total</span></div>`).join('');
+    $('res-dos').innerHTML =
+        resBloque('res-bloque', 'download', 'Más descargado', resTop(r.d, resEsContenido, 5, r.ld), resFilaContenido, 'descargas', 'Sin descargas todavía') +
+        resBloque('res-bloque', 'visibility', 'Más visto', resTop(r.v, resEsContenido, 5), resFilaContenido, 'visitas', 'Sin visitas todavía') +
+        (adm ? resBloque('res-bloque', 'emoji_events', 'Top usuarios', resTopUsuariosSiempre(r, 5), resFilaUsuarioSiempre, 'puntos', 'Sin usuarios todavía')
+             : resBloque('res-bloque', 'favorite', 'Top likes', resTop(r.l, resEsContenido, 5), resFilaContenido, 'likes', 'Sin likes todavía'));
+    resExtraSiempre(r);
+    resAjusta();
+}
+function resExtraSiempre(r) {
+    const box = $('res-extra'); if (!box) return;
+    const gente = new Set();
+    (aS.cP || []).forEach(c => { if (resMia(c.p) && c.pub !== false) gente.add(idKey(c.u, c.n)); });
+    const meses = Object.create(null);
+    (aS.dP || []).forEach(x => { if (resMia(x.p)) { const d = new Date(x.f), k = d.getFullYear() * 12 + d.getMonth(); meses[k] = (meses[k] || 0) + 1; } });
+    let mejor = null; Object.keys(meses).forEach(k => { if (mejor === null || meses[k] > meses[mejor]) mejor = k; });
+    const cont = new Set([...Object.keys(r.v), ...Object.keys(r.d), ...Object.keys(r.l)].filter(resEsContenido)).size;
+    const mes = mejor === null ? 'Sin descargas' : resCap(RES_MESES[mejor % 12]) + ' ' + Math.floor(mejor / 12) + ' · ' + meses[mejor].toLocaleString();
+    box.innerHTML = `<div><div class="res-extra-l">Personas que han comentado</div><div class="res-extra-v">${gente.size.toLocaleString()}</div></div>`
+        + `<div><div class="res-extra-l">Mes con más descargas</div><div class="res-extra-v">${mes}</div></div>`
+        + `<div><div class="res-extra-l">Contenido publicado</div><div class="res-extra-v">${cont.toLocaleString()}</div></div>`;
+}
 $('studio-wrapper').addEventListener('click', e => {
     if (e.target.closest('a[href]')) return;            // los enlaces normales funcionan solos
     const el = e.target.closest('[data-act]');
